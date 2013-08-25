@@ -1,0 +1,59 @@
+tpt-font-editor
+===============
+
+  A program to create and modify the font data used in The Powder Toy. 
+  The program is not my work, it is the work of Stanislaw Skowronek, 
+  except this was never packaged individually.
+
+  This program has been extracted from 
+  https://github.com/FacialTurd/The-Powder-Toy/tree/legacy/font/
+
+
+Compilation
+-----------
+    
+    $ mkdir build
+    $ make
+    or...
+    $ make lin
+  
+  Builds all Linux/etc binaries.
+
+    > mkdir build
+    > make win
+
+  Builds all Windows binaries.
+
+    $ make %
+    > make %.exe
+
+  Builds a specific binary.
+
+
+Usage
+-----
+
+  Packer
+  ~~~~~~
+
+    ?????
+
+  Unpacker
+  ~~~~~~~~
+
+    ?????
+
+  Editor
+  ~~~~~~
+
+    Click to toggle particle lightness in four states: 
+    white, ltgray, dkgray, black. 
+
+    That's all we know.
+
+Credit
+------
+
+  (c) 2008 Stanislaw Skowronek
+  That's all we know.
+
