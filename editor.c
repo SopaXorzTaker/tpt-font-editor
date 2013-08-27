@@ -17,6 +17,9 @@ char base=7, top=2;
 char font[256][CELLH][CELLW];
 char width[256];
 
+// Text to show which ASCII code they're on
+char currcode[100];
+
 void blendpixel(unsigned *vid, int x, int y, int r, int g, int b, int a)
 {
     int t;
@@ -187,7 +190,7 @@ char *tag = "(c) 2008 Stanislaw Skowronek";
 int main(int argc, char *argv[])
 {
     unsigned *vid_buf = calloc(XRES*YRES, sizeof(unsigned));
-    int x, y, b = 0, lb, c = 0xA0, i, j, dc = 0;
+    int x, y, b = 0, lb, c = 0x61, i, j, dc = 0;
     int mode = 0;
     FILE *f;
 
@@ -201,18 +204,19 @@ int main(int argc, char *argv[])
 	fread(font, CELLW*CELLH, 256, f);
 	fclose(f);
     }
-
+    // Start off the charcode thing
+    sprintf(currcode, "Current: \\x%02X '%c'", c, c);
     sdl_open();
     while(!sdl_poll()) {
 	if(sdl_key=='q' || sdl_key==SDLK_ESCAPE)
 	    break;
-	if(sdl_key==' ' || sdl_key=='=') {
+	if(sdl_key==' ' || sdl_key=='=' || sdl_key==SDLK_RIGHT) {
 	    c++;
-	    printf("Current: %02X '%c'\n", c, c);
+	    sprintf(currcode, "Current: \\x%02X '%c'", c, c);
 	}
-	if(sdl_key=='\b' || sdl_key=='-') {
+	if(sdl_key=='\b' || sdl_key=='-' || sdl_key==SDLK_LEFT) {
 	    c--;
-	    printf("Current: %02X '%c'\n", c, c);
+	    sprintf(currcode, "Current: \\x%02X '%c'", c, c);
 	}
 
 	lb = b;
@@ -268,6 +272,14 @@ int main(int argc, char *argv[])
 	drawtext(vid_buf, 64, 192+33*CELLH, "A QUICK BROWN FOX JUMPS OVER THE LAZY DOG.", 255, 255, 255);
 	drawtext(vid_buf, 64, 192+34*CELLH, "0123456789 ~`!@#$%^&*()-=_+[]{}\\|;:'\",./<>?", 255, 255, 255);
 
+  // drawtext(buff, x, y, str, r, g, b);
+  drawtext(vid_buf, 550, 77, "TPT Font Editor", 200, 200, 200);
+  drawtext(vid_buf, 550, 77+  CELLH, "Use the arrow keys to change icon", 200, 200, 200);
+  drawtext(vid_buf, 550, 77+2*CELLH, "Click on a square to change its color", 200, 200, 200);
+  drawtext(vid_buf, 550, 77+3*CELLH, "Drag the red line to change char width ", 200, 200, 200);
+  drawtext(vid_buf, 550, 77+4*CELLH, "The blue line indicates baseline", 200, 200, 200);
+  drawtext(vid_buf, 550, 77+5*CELLH, "and the green line indicates mean line", 200, 200, 200);
+  drawtext(vid_buf, 550, 77+6*CELLH, currcode, 255, 255, 255);
 	drawchar(vid_buf, 32, 192+32*CELLH, c, 255, 255, 255);
 
 	sdl_blit(0, 0, XRES, YRES, vid_buf, XRES*4);
