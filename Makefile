@@ -7,10 +7,10 @@ win: editor.exe packer.exe unpacker.exe
 
 
 editor: editor.c
-	gcc -o build/editor -DSCALE=2 -DFONTEDITOR editor.c -lSDL -lm -O3 -ffast-math -march=k8 -Wall -std=c99 -Iinclude
+	gcc -o build/editor -DSCALE=1 -DFONTEDITOR editor.c -lSDL -lm -O3 -ffast-math -march=k8 -Wall -std=c99 -Iinclude
 	
 editor.exe: editor.c
-	gcc -o build/editor.exe -DSCALE=2 -DFONTEDITOR editor.c -lmingw32 -lm -lSDLmain -lSDL -O3 -ffast-math -march=k8 -Wall -std=c99 -mwindows -Iinclude
+	gcc -o build/editor.exe -DSCALE=1 -DFONTEDITOR editor.c -lmingw32 -lm -lSDLmain -lSDL -O3 -ffast-math -march=k8 -Wall -std=c99 -mwindows -Iinclude
 	
 packer: packer.c
 	gcc -o build/packer -DFONTEDITOR packer.c -lm -O3 -ffast-math -march=k8 -Wall -std=c99 -Iinclude
