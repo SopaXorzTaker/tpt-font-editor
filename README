@@ -36,24 +36,41 @@ Usage
   Packer
   ~~~~~~
 
-    ?????
+    From font.bin generates an usable font.h file (Forward the output to 
+    a file) 
+
+    Usage: packer > font.h
 
   Unpacker
   ~~~~~~~~
 
-    ?????
+    From current font.h generates a font.bin file which can be used in the 
+    editor. 
+
+    Usage: unpacker
 
   Editor
   ~~~~~~
 
     Click to toggle particle lightness in four states: 
-    white, ltgray, dkgray, black. 
+    white, light gray, dark gray, black. 
 
-    That's all we know.
+    Click and drag the red line to specify the character's right edge. This is 
+    to make the font dynamic-width. 
+
+    You won't need to change the green or blue line: those indicate 
+    font height and baseline respectively.
+
+
+    Press Q or Escape to close the program.
+    Press Space or = or the right arrow key to move to the next character.
+    Press Backspace or - or the left arrow key to move to the previous character.
+    
 
 Credit
 ------
 
   (c) 2008 Stanislaw Skowronek
+  Edits and tweaks by boxmein
   That's all we know.
 
