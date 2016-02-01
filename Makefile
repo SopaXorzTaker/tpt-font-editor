@@ -1,7 +1,8 @@
 # Use *.exe for Windows and * for anything POSIX compatible.
 
 .PHONY: all
-all: editor packer unpacker
+all: lin
+lin: editor packer unpacker
 win: editor.exe packer.exe unpacker.exe
 
 
